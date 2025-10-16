@@ -1,0 +1,46 @@
+<% layout("/layouts/boilerplate") %>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Marcellus&display=swap"
+  rel="stylesheet"
+/>
+<link
+  href="https://db.onlinewebfonts.com/c/1f31b8f9b2f9b6f5f53c6c3a4c9e3f3b?family=Great+Victorian+Standard"
+  rel="stylesheet"
+  type="text/css"
+/>
+<link rel="stylesheet" href="../css/hero.css" />
+<body>
+ 
+
+  <h3>All Listing</h3>
+  <form method="GET" action="/listings/new">
+    <button>Create New Listing</button>
+  </form>
+
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+    <% for(let listing of allListings) { %>
+        <a href="/listings/<%= listing._id %>" class="listing-link">
+    <div class="card col" >
+      <img
+        src="<%= listing.image %>"
+        class="card-img-top"
+        alt="listing image"
+        style="height: 20rem"
+      />
+      <div class="card-img-overlay">abc</div>
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">
+          <b><%= listing.title %> <br /></b>
+          &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %>
+
+        </p>
+
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+    <% } %>
+    </b>
+  </div>
+</body>
