@@ -6,13 +6,18 @@
   min-height: 100vh;
 }
 
+
+
 .container {
   flex: 1;
 }
 
+
 .navbar {
-  height: 5rem;
-  background-color: aliceblue;
+  height: 4.8rem;
+  font-size: 1.1rem;
+  background-color: #ffffff;
+  
 }
 
 /* footer */
