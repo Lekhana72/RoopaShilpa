@@ -1,3 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+
 .marcellus-regular {
   font-family: "Marcellus", serif !important;
   font-weight: 400;
@@ -107,3 +116,27 @@
   padding-left: 0;
   padding-right: 0;
 }
+
+
+
+/* about */
+section {
+  scroll-margin-top: 80px;
+}
+
+.lead {
+  line-height: 1.7;
+}
+
+.customOrder-div{
+  background: rgba(183, 190, 93, 0.88);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4.6px);
+-webkit-backdrop-filter: blur(4.6px);
+}
+
+
+
+
+

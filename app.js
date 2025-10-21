@@ -33,6 +33,33 @@ app.get("/", async (req, res) => {
   res.render("listings/hero");
 });
 
+const CustomizeOrder = require('./models/customOrder'); // Adjust path if needed
+
+app.post('/orders', async (req, res) => {
+  try {
+    const orderData = req.body;
+
+    // Create a new order from form data
+    const newOrder = new CustomizeOrder(orderData);
+
+    // Save to MongoDB
+    await newOrder.save();
+
+    // Send a success response (you can redirect or render a success page)
+    
+    res.render("orders");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Something went wrong while saving your order.");
+  }
+});
+
+app.get('/orders', async (req, res) => {
+  const orders = await CustomizeOrder.find({});
+  res.render('orders', { orders }); // Create 'orders.ejs'
+});
+
+
 // schema validate
 const validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
@@ -55,6 +82,8 @@ app.get("/listings", async (req, res) => {
 app.get("/listings/new", (req, res) => {
   res.render("listings/new.ejs");
 });
+
+
 
 // Show Route
 app.get("/listings/:id", async (req, res) => {
@@ -113,6 +142,9 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
+
+
+
 // app.get("/testListing", async(req,res)=>{
 //     let sampleListing = new Listing ({
 //         title : "My new villa",
@@ -137,6 +169,8 @@ app.use((err, req, res, next) => {
   // res.status(statusCode).send(message);
   res.status(statusCode).render("error.ejs", { message });
 });
+
+
 
 app.listen(8080, () => {
   console.log("server is listening to port 8080");

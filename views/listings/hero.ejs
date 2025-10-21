@@ -37,68 +37,61 @@
     </div>
   </div>
 </div>
-<h2
-  class="fw-bold mt-3 mb-5"
-  style="color: #cba535; font-family: 'Marcellus', serif"
->
-  About the Sculptor
-</h2>
-<section class="py-5 mb-5 " style="background-color: #eddfb8">
+
+<!-- about  -->
+
+<section class="py-5" style="background-color: #f9f7f1;">
   <div class="container">
     <div class="row align-items-center">
+      
       <!-- LEFT SIDE: Image -->
-      <div class="col-lg-6 mb-4 mb-lg-0 position-relative text-center">
-        <img
-          src="./assests/about.png"
-          alt="Master Sculptor at Work"
-          class="img-fluid rounded-4 shadow-lg"
-          style="
-            max-height: 400px;
-            width: 80%;
-            object-fit: cover;
-            background-color: whitesmoke;
-          "
-        />
-        <img
-          src="./assests/hero1.png"
-          alt="sculpting picture"
-          class="img-fluid rounded-4 shadow position-absolute"
-          style="width: 25%; bottom: -40px; left: 20px; border: 5px solid #ffff"
-        />
+      <div class="col-lg-5 text-center mb-4 mb-lg-0">
+        <img src="./assests/hero1.png" 
+             alt="Shilpashree T. Pankajaksha" 
+             class="img-fluid rounded-4 shadow"
+             style="max-height: 450px; object-fit: cover; background-color: whitesmoke;">
       </div>
 
-      <!-- RIGHT SIDE: Text -->
-      <div class="col-lg-6">
-        <p
-          class="lead mb-5 mt-4"
-          style="font-family: 'Great Victorian Standard', serif; color: #4a4a4a"
-        >
-          With over three decades of experience, our sculptor transforms raw
-          stone into divine masterpieces. Each sculpture reflects dedication,
-          precision, and a deep connection to traditional South Indian art. From
-          sacred idols to modern interpretations, his work celebrates timeless
-          craftsmanship.
+      <!-- RIGHT SIDE: Text Content -->
+      <div class="col-lg-7">
+        <h2 class="fw-bold mb-3" 
+            style="font-family: 'Marcellus', serif; color: #cba535;">
+          About Shilpashree T. Pankajaksha
+        </h2>
+        <p class="lead" style="font-family: 'Great Victorian Standard', serif; color: #4a4a4a;">
+          Born on 29th June 1971 and with formal school education in his hometown 
+          Narasimharajapura in Karnataka, Mr. Pankajaksha had training in carpentry 
+          (his family tradition). He later studied sculpture at the 
+          K.P.J. Prabhu Artisan Training School at Bidadi in Karnataka. 
+          His Shilpashastra training was under the internationally reputed 
+          Prof. S.K. Ramachandra Rao — author of many books on different aspects of Indian culture.
         </p>
-        <p style="color: #5c5c5c">
-          Every chisel mark tells a story — a story of devotion, patience, and
-          the unbroken heritage of temple artistry passed down through
-          generations.
+        <p class="lead" style="font-family: 'Great Victorian Standard', serif; color: #4a4a4a;">
+          He has studied the four classical styles of sculpture — 
+          <strong>Chalukya, Chera, Chola, and Hoysala</strong> — 
+          and authored a book titled <em>“Shilpa Soundarya”</em> (in Kannada), 
+          published by the Karnataka Shilpa Kala Academy, Bangalore.  
+          He expresses gratitude for the assistance provided by the 
+          <strong>India Foundation for the Arts</strong>, Bangalore, and the 
+          <strong>Sir Ratan Tata Trust</strong>, Mumbai, established in 1919.
         </p>
       </div>
+
     </div>
   </div>
 </section>
 
+
 <!-- works  -->
-<section class="py-5 text-center" style="background-color: #f5dc9f">
+<section class="py-5 text-center mt-5" style="background-color: #ffffff">
   <div class="container">
     <!-- Section Heading -->
-    <h2
+    <h1
       class="fw-bold mb-4"
       style="color: #c0742a; font-family: 'Marcellus', serif"
     >
       Featured Creations
-    </h2>
+    </h1>
     <p
       class="lead mb-5"
       style="font-family: 'Great Victorian Standard', serif; color: #4a4a4a"
@@ -106,6 +99,7 @@
       Discover a glimpse of our handcrafted stone masterpieces — each one carved
       with devotion and precision.
     </p>
+    <hr>
 
     <!-- Card Row -->
     <div class="row g-4">
@@ -113,7 +107,7 @@
       <div class="col-md-4">
         <div class="card shadow-sm border-0 rounded-4">
           <img
-            src="/images/ganesha.jpg"
+            src="./assests/dhanvanthri.jpg"
             class="card-img-top rounded-top-4"
             alt="Ganesha Sculpture"
           />
@@ -133,7 +127,7 @@
       <div class="col-md-4">
         <div class="card shadow-sm border-0 rounded-4">
           <img
-            src="/images/nataraja.jpg"
+            src="./assests/dhanvanthri.jpg"
             class="card-img-top rounded-top-4"
             alt="Nataraja Sculpture"
           />
@@ -153,7 +147,7 @@
       <div class="col-md-4">
         <div class="card shadow-sm border-0 rounded-4">
           <img
-            src="/images/mahalakshmi.jpg"
+            src="./assests/dhanvanthri.jpg"
             class="card-img-top rounded-top-4"
             alt="Mahalakshmi Sculpture"
           />
@@ -182,3 +176,109 @@
     </div>
   </div>
 </section>
+
+<hr>
+
+<div class="py-5 col-lg-5 col-sm-8 ">
+  <div class="container">
+    <h1>Get a Customized Order</h1><br><br>
+
+    <p>Choose your preferences and customize your order. Start now by clicking the button below.</p>
+    <p>Check out more options!</p>
+    <div class="cta-buttons">
+      <div class="container" style="background-color: #b7be5d;">
+    <h1>Customize Your Order</h1>
+
+    <form action="/orders" method="POST">
+      <div>
+        <label for="title" class="form-label">Title <span style="color:red">*</span></label>
+        <input class="form-control" type="text" id="title" name="title" required>
+      </div>
+
+      <div>
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" name="description" rows="4" class="form-control"></textarea>
+      </div>
+
+      <div>
+        <label class="form-label" for="stone">Stone</label>
+        <input  class="form-control" type="text" id="stone" name="stone">
+      </div>
+
+      <div>
+        <label class="form-label" for="height">Height (cm)</label>
+        <input class="form-control" type="number" id="height" name="height" step="any">
+      </div>
+
+      <div>
+        <label class="form-label" for="place">Place</label>
+        <input class="form-control" type="text" id="place" name="place">
+      </div>
+
+      <div>
+        <label class="form-label" for="duration">Duration (days)</label>
+        <input class="form-control" type="number" id="duration" name="duration">
+      </div>
+
+      <div>
+        <button class="btn-dark btn mt-5" type="submit">Submit Order</button>
+      </div>
+    </form>
+  </div>
+
+
+
+
+      <!-- Customize Order button -->
+      <!-- <a href="/cusOrder" class="btn btn-primary">Customize Order</a> -->
+    </div>
+  </div>
+</div>
+
+
+
+<section class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5" style="font-family: 'Marcellus', serif; color:#cba535;">
+      What Our Customers Say
+    </h2>
+    
+    <div class="row text-center">
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow-sm p-4">
+          
+          <p class="text-muted fst-italic">
+            “Beautiful craftsmanship! The sculpture exceeded my expectations. A true work of art.”
+          </p>
+          <h5 class="fw-bold" style="color:#4a4a4a;">— Priya Nair</h5>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow-sm p-4">
+          
+          <p class="text-muted fst-italic">
+            “Exceptional quality and attention to detail. The sculpture brings peace to our home.”
+          </p>
+          <h5 class="fw-bold" style="color:#4a4a4a;">— Ramesh Iyer</h5>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4">
+        <div class="card border-0 shadow-sm p-4">
+          
+          <p class="text-muted fst-italic">
+            “Truly divine craftsmanship. I could feel the artist’s devotion in the work.”
+          </p>
+          <h5 class="fw-bold" style="color:#4a4a4a;">— Meera Subramanian</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
