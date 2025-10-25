@@ -58,7 +58,7 @@
 }
 
 /* Cards  */
-.card {
+.listings-card {
   border: none !important;
   margin-bottom: 2rem;
 }
@@ -135,6 +135,48 @@ box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 backdrop-filter: blur(4.6px);
 -webkit-backdrop-filter: blur(4.6px);
 }
+
+/* Main content */
+    .main-section {
+      padding: 3rem 1rem;
+    }
+
+    .card-custom {
+      background-color: #fffaf2;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 2rem;
+    }
+
+    .heading {
+      font-weight: 700;
+      color: #3c2e25;
+    }
+
+    .btn-maroon {
+      background-color: #703c2e;
+      color: #fff;
+      font-weight: 500;
+      border-radius: 6px;
+    }
+
+    .btn-maroon:hover {
+      background-color: #5b2d22;
+    }
+
+    label {
+      font-weight: 600;
+      color: #3c2e25;
+    }
+
+    .artist-card {
+      background-color: #fffaf2;
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin-top: 1.5rem;
+    }
 
 
 

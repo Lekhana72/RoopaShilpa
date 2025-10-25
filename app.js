@@ -7,7 +7,9 @@ const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const wrapAsync = require("./utils/wrapAsync.js");
 const ExpressError = require("./utils/ExpressError.js");
-const { listingSchema } = require("./schema.js");
+const { listingSchema, reviewSchema } = require("./schema.js");
+const Review = require("./models/review.js");
+const CustomizeOrder = require("./models/commissionRequest.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 main()
@@ -29,43 +31,39 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/", async (req, res) => {
-  
   res.render("listings/hero");
+  // console.log("I am root");
 });
 
-const CustomizeOrder = require('./models/customOrder'); // Adjust path if needed
-
-app.post('/orders', async (req, res) => {
-  try {
-    const orderData = req.body;
-
-    // Create a new order from form data
-    const newOrder = new CustomizeOrder(orderData);
-
-    // Save to MongoDB
-    await newOrder.save();
-
-    // Send a success response (you can redirect or render a success page)
-    
-    res.render("orders");
-  } catch (err) {
-    console.error(err);
-    res.status(500).send("Something went wrong while saving your order.");
-  }
-});
-
-app.get('/orders', async (req, res) => {
-  const orders = await CustomizeOrder.find({});
-  res.render('orders', { orders }); // Create 'orders.ejs'
-});
-
+// app.post("/commissions", async (req, res) => {
+//   try {
+//     const newRequest = new CommissionRequest(req.body);
+//     await newRequest.save();
+//     res
+//       .status(200)
+//       .json({ message: "Commission request submitted successfully!" });
+//   } catch (err) {
+//     res.status(500).json({ error: err.message });
+//   }
+// });
 
 // schema validate
 const validateListing = (req, res, next) => {
   let { error } = listingSchema.validate(req.body);
 
   if (error) {
-    let errMsg = error.details.map((el)=>el.message).join(",");
+    let errMsg = error.details.map((el) => el.message).join(",");
+    throw new ExpressError(400, error);
+  } else {
+    next();
+  }
+};
+
+const validateReview = (req, res, next) => {
+  let { error } = reviewSchema.validate(req.body);
+
+  if (error) {
+    let errMsg = error.details.map((el) => el.message).join(",");
     throw new ExpressError(400, error);
   } else {
     next();
@@ -83,14 +81,15 @@ app.get("/listings/new", (req, res) => {
   res.render("listings/new.ejs");
 });
 
-
-
 // Show Route
-app.get("/listings/:id", async (req, res) => {
-  let { id } = req.params;
-  const listing = await Listing.findById(id);
-  res.render("listings/show.ejs", { listing });
-});
+app.get(
+  "/listings/:id",
+  wrapAsync(async (req, res) => {
+    let { id } = req.params;
+    const listing = await Listing.findById(id).populate("reviews");
+    res.render("listings/show.ejs", { listing });
+  })
+);
 
 // create Route
 app.post(
@@ -127,7 +126,6 @@ app.put(
   "/listings/:id",
   validateListing,
   wrapAsync(async (req, res) => {
-    
     let { id } = req.params;
     await Listing.findByIdAndUpdate(id, { ...req.body.listing });
     res.redirect(`/listings/${id}`);
@@ -142,8 +140,38 @@ app.delete("/listings/:id", async (req, res) => {
   res.redirect("/listings");
 });
 
+// reviews
+// Post Route
+// here validateReview is passed as middleware
+app.post(
+  "/listings/:id/reviews",
+  validateReview,
+  wrapAsync(async (req, res) => {
+    let listing = await Listing.findById(req.params.id);
+    let newReview = new Review(req.body.review);
 
+    listing.reviews.push(newReview);
 
+    await newReview.save();
+    await listing.save();
+
+    console.log("new review saved");
+    res.redirect(`/listings/${listing._id}`);
+  })
+);
+
+// Delete Review Route
+app.delete(
+  "/listings/:id/reviews/:reviewId",
+  wrapAsync(async (req, res) => {
+    let { id, reviewId } = req.params;
+
+    await Listing.findByIdAndUpdate(id, {$pull:{reviews: reviewId}});
+    await Review.findByIdAndDelete(reviewId);
+
+    res.redirect(`/listings/${id}`);
+  })
+);
 
 // app.get("/testListing", async(req,res)=>{
 //     let sampleListing = new Listing ({
@@ -169,8 +197,6 @@ app.use((err, req, res, next) => {
   // res.status(statusCode).send(message);
   res.status(statusCode).render("error.ejs", { message });
 });
-
-
 
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
