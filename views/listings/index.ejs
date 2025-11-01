@@ -13,34 +13,33 @@
 <body>
  
 
-  <h3>All Listing</h3>
-  <form method="GET" action="/listings/new">
-    <button>Create New Listing</button>
-  </form>
+  <h3>All Listings</h3>
 
-  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
-    <% for(let listing of allListings) { %>
-        <a href="/listings/<%= listing._id %>" class="listing-link">
-    <div class="card col" >
-      <img
-        src="<%= listing.image %>"
-        class="card-img-top"
-        alt="listing image"
-        style="height: 20rem"
-      />
-      <div class="card-img-overlay">abc</div>
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <p class="card-text">
-          <b><%= listing.title %> <br /></b>
-          &#8377; <%= listing.price ? listing.price.toLocaleString("en-IN") : "Price not available" %>
+<form method="GET" action="/listings/new">
+  <button type="submit" class="btn btn-success mb-3">Create New Listing</button>
+</form>
 
-        </p>
-
-        <a href="#" class="btn btn-primary">Go somewhere</a>
-      </div>
+<div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 g-4 py-4">
+  <% for (let listing of allListings) { %>
+    <div class="col">
+      <a href="/listings/<%= listing._id %>" class="text-decoration-none text-dark">
+        <div class="card h-100">
+          <img
+            src="<%= listing.image %>"
+            class="card-img-top py-4"
+            alt="listing image"
+            style="height: 30rem;width:20px; object-fit: cover;"
+          />
+          <div class="card-body py-5">
+            <h5 class="card-title"><%= listing.title %></h5>
+            <p class="card-text mb-2">
+              <strong>&#8377; <%= listing.price ? listing.price.toLocaleString('en-IN') : "Price not available" %></strong>
+            </p>
+            <p class="card-text"><%= listing.description ? listing.description.slice(0, 60) + '...' : '' %></p>
+            <a href="/listings/<%= listing._id %>" class="btn btn-dark ">View Details</a>
+          </div>
+        </div>
+      </a>
     </div>
-    <% } %>
-    </b>
-  </div>
-</body>
+  <% } %>
+</div>

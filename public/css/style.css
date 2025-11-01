@@ -1,9 +1,20 @@
-* {
+html,body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+}
+.sedan-regular {
+  font-family: "Sedan", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.sedan-regular-italic {
+  font-family: "Sedan", serif;
+  font-weight: 400;
+  font-style: italic;
 }
 
 
@@ -28,7 +39,24 @@
   background-color: #ffffff;
   
 }
+nav.navbar {
+  position: static !important;
+}
+.navbar.sticky-top {
+  position: sticky !important;
+  top: 0;
+  z-index: 1030; /* keeps it above other elements */
+}
+.navbar {
+  background-color: white; /* or any color */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
 
+
+/* how ist works  */
+.step-icon {
+  background-color: #b7be5d !important;
+}
 /* footer */
 .f-info-links a {
   text-decoration: none;
@@ -56,6 +84,101 @@
   background-color: antiquewhite;
   align-items: space-evenly;
 }
+
+
+
+/* heroooooo */
+/* Fullscreen hero background */
+      .hero-section {
+        background: url("/assests/hero_back.png")
+          center center/cover no-repeat;
+        height: 100vh;
+        position: relative;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
+      }
+
+      /* Dark overlay */
+      
+      
+
+
+
+/* Hero content styling */
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 600px;
+        margin-left: 5%;
+      }
+
+      .hero-subtitle {
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-size: 0.9rem;
+        opacity: 0.85;
+      }
+
+      .hero-title {
+        font-size: 3.5rem;
+        font-weight: 500;
+        margin: 10px 0;
+      }
+
+      .hero-btn {
+        color: white;
+        border-bottom: 1px solid white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      .hero-btn:hover {
+        color: #f8d210;
+        border-color: #f8d210;
+      }
+
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2rem;
+        }
+      }
+
+ .hero-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* background-color: rgba(0, 0, 0, 0.55); */
+        z-index: 0;
+      }
+
+/* stats */
+.stats-section {
+  position: relative;
+  background: rgba(255, 255, 255, 0.8); /* soft white overlay */
+  overflow: hidden;
+}
+
+.stats-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('/assests/stats_bg.jpg') no-repeat center/cover;
+  opacity: 0.15; /* controls how visible the illustration is */
+  z-index: 0;
+}
+
+.stats-section > .container {
+  position: relative;
+  z-index: 1; /* keeps the stats above the background */
+}
+
+      
 
 /* Cards  */
 .listings-card {
@@ -119,6 +242,7 @@
 
 
 
+
 /* about */
 section {
   scroll-margin-top: 80px;
@@ -178,7 +302,59 @@ backdrop-filter: blur(4.6px);
       margin-top: 1.5rem;
     }
 
+    /* commission masterpiece */
+    /* Overall layout */
+ .main-section {
+      padding: 5rem 0;
+    }
 
+    .heading {
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
 
+    /* Glass Form */
+    .glass-form {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+      padding: 2rem;
+    }
 
+    .form-control {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #fff;
+    }
 
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .btn-gold {
+      background: linear-gradient(90deg, #cba535, #b7be5d);
+      color: #000;
+      border: none;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+    }
+
+    .btn-gold:hover {
+      background: linear-gradient(90deg, #b7be5d, #cba535);
+      transform: translateY(-2px);
+      color: #000;
+    }
+
+    .artist-card img {
+      border-radius: 50%;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    @media (max-width: 991px) {
+      .glass-form {
+        margin-top: 2rem;
+      }
+    }

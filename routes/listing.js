@@ -17,6 +17,8 @@ const validateListing = (req, res, next) => {
   }
 };
 
+
+
 // Index Route
 router.get("/", async (req, res) => {
   const allListings = await Listing.find({});

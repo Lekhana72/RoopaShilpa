@@ -1,6 +1,7 @@
 const sampleListings = [
     {
         title : "My new villa",
+        image : "https://i.postimg.cc/Rhb5Xggw/saraswathi-removebg-preview.png",
         description: "By the beach",
         price : 22000,
         location : "bali",

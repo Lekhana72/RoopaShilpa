@@ -12,9 +12,9 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user.js");
 
-
-const listingRouter = require("./routes/listing.js")
-const reviewRouter = require("./routes/review.js")
+const homeRouter = require("./routes/home.js");
+const listingRouter = require("./routes/listing.js");
+const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
@@ -47,10 +47,7 @@ const sessionOptions = {
   },
 };
 
-app.get("/", async (req, res) => {
-  res.render("listings/hero");
-  // console.log("I am root");
-});
+
 
 app.use(session(sessionOptions));
 app.use(flash());
@@ -74,52 +71,11 @@ app.use((req,res, next)=>{
   next();
 });
 
-// app.get("/demouser",async(req,res)=>{
-//   let fakeUser = new User({
-//     email: "roopashilpa@gmail.com",
-//     username: "rs"
-
-//   });
-// // checks username is unique or not
-//   let registeredUser = await User.register(fakeUser,"helloworld");
-//   res.send(registeredUser);
-// })
-
+app.use("/home",homeRouter);
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-// app.post("/commissions", async (req, res) => {
-//   try {
-//     const newRequest = new CommissionRequest(req.body);
-//     await newRequest.save();
-//     res
-//       .status(200)
-//       .json({ message: "Commission request submitted successfully!" });
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// });
-
-
-
-
-
-
-
-
-// app.get("/testListing", async(req,res)=>{
-//     let sampleListing = new Listing ({
-//         title : "My new villa",
-//         description: "By the beach",
-//         price : 22000,
-//         location : "bali",
-//         country : "India",
-//     });
-//     await sampleListing.save();
-//     console.log("sample listing");
-//     res.send("Successful");
-// });
 
 app.all(/.*/, (req, res, next) => {
   next(new ExpressError(404, "Page Not Found"));
@@ -133,12 +89,22 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("error.ejs", { message });
 });
 
-app.get("/register",(req, res)=>{
-  let {name ="anonymous"} = req.query;
-  req.session.name = name;
-  res.redirect("/hello");
-});
+// app.get("/register",(req, res)=>{
+//   let {name ="anonymous"} = req.query;
+//   req.session.name = name;
+//   res.redirect("/hello");
+// });
 
 app.listen(8080, () => {
   console.log("server is listening to port 8080");
 });
+
+
+// app.get("/demouser",async(req,res)=>{
+//   let fakeUser = new User({
+//     email: "roopashilpa@gmail.com",
+//     username: "rs"
+
+// vvv
+// vvv@gmail.com
+// vvv
