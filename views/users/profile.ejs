@@ -1,0 +1,70 @@
+<% layout('/layouts/boilerplate') %>
+
+<div class="container mt-5">
+  <h2>Profile — <%= user.username %></h2>
+  <p class="text-muted">Email: <%= user.email %></p>
+
+  <hr />
+  <% if (isAdmin) { %>
+    <h4>All Orders (Admin)</h4>
+    <% if (!adminOrders || adminOrders.length === 0) { %>
+      <p>No orders placed yet.</p>
+    <% } else { %>
+      <div class="table-responsive">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>Owner</th>
+              <th>Email</th>
+              <th>Title</th>
+              <th>Height</th>
+              <th>Material</th>
+              <th>Timeline</th>
+              <th>Location</th>
+              <th>Customized</th>
+              <th>Placed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for (let item of adminOrders) { %>
+              <tr>
+                <td><%= item.ownerUsername %></td>
+                <td><%= item.ownerEmail %></td>
+                <td><%= item.order.title %></td>
+                <td><%= item.order.height || '—' %></td>
+                <td><%= item.order.material || '—' %></td>
+                <td><%= item.order.timeline || '—' %></td>
+                <td><%= item.order.location || '—' %></td>
+                <td><%= item.order.customized ? 'Yes' : 'No' %></td>
+                <td><%= new Date(item.order.createdAt).toLocaleString() %></td>
+              </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    <% } %>
+  <% } else { %>
+    <h4>Your Orders</h4>
+    <% if (!user.orders || user.orders.length === 0) { %>
+      <p>No orders yet.</p>
+    <% } else { %>
+      <div class="row row-cols-1 row-cols-md-2 g-4">
+        <% for (let o of user.orders) { %>
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title"><%= o.title %> <small class="text-muted">(<%= o.customized ? 'Customized' : 'Quick order' %>)</small></h5>
+                <p class="card-text"><%= o.description %></p>
+                <p><strong>Height:</strong> <%= o.height || '—' %> cm</p>
+                <p><strong>Material:</strong> <%= o.material || '—' %></p>
+                <p><strong>Timeline:</strong> <%= o.timeline || '—' %></p>
+                <p><strong>Location:</strong> <%= o.location || '—' %></p>
+                <p class="text-muted"><small>Placed on <%= new Date(o.createdAt).toLocaleString() %></small></p>
+              </div>
+            </div>
+          </div>
+        <% } %>
+      </div>
+    <% } %>
+  <% } %>
+</div>

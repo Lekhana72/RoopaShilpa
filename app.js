@@ -5,7 +5,7 @@ const path = require("path");
 const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError.js");
-const CustomizeOrder = require("./models/commissionRequest.js");
+const Order = require("./models/order.js");
 const session = require("express-session");
 const flash = require("connect-flash");
 const passport = require("passport");
@@ -16,8 +16,14 @@ const homeRouter = require("./routes/home.js");
 const listingRouter = require("./routes/listing.js");
 const reviewRouter = require("./routes/review.js");
 const userRouter = require("./routes/user.js");
+const orderRouter = require("./routes/custom.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
+async function main() {
+  await mongoose.connect(MONGO_URL);
+}
+
+// Connect to DB
 main()
   .then(() => {
     console.log("connected to DB");
@@ -25,9 +31,6 @@ main()
   .catch((err) => {
     console.log(err);
   });
-async function main() {
-  await mongoose.connect(MONGO_URL);
-}
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
@@ -75,6 +78,7 @@ app.use("/home",homeRouter);
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use("/custom", orderRouter);
 
 
 app.all(/.*/, (req, res, next) => {

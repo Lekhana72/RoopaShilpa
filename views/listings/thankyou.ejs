@@ -1,0 +1,21 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-5 text-center">
+  <h2 class="mb-3">🎉 Thank You for Your Order!</h2>
+  <p>Your custom sculpture request has been successfully submitted.</p>
+
+  <div class="card mx-auto mt-4" style="max-width: 500px;">
+    <div class="card-body text-start">
+      <h5 class="card-title"><strong>Order Summary</strong></h5>
+      <p><strong>Title:</strong> <%= order.title %></p>
+      <p><strong>Description:</strong> <%= order.description %></p>
+      <p><strong>Height:</strong> <%= order.height %> cm</p>
+      <p><strong>Material:</strong> <%= order.material %></p>
+      <p><strong>Timeline:</strong> <%= order.timeline %></p>
+      <p><strong>Location:</strong> <%= order.location %></p>
+      <p class="text-muted"><small>Submitted on <%= order.createdAt.toDateString() %></small></p>
+    </div>
+  </div>
+
+  <a href="/custom" class="btn btn-primary mt-4">Back to Listings</a>
+</div>

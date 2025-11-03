@@ -1,0 +1,93 @@
+<% layout("/layouts/boilerplate") %>
+
+<form method="post" action="/custom" novalidate class="needs-validation">
+<div class="py-4">
+    <div class="container ">
+      <div class="commission-card bg-transparent">
+        <div class="row g-0 align-items-stretch">
+
+          <!-- Left: Image + Text -->
+          <div class="col-md-6" style="background-image: url('/assests/elephant1_bw.png');">
+            <div class="left-side" >
+              <div class="left-overlay text-white">
+                <h2 class="display-6">Commission Masterpiece</h2>
+                <p class="mb-3">Bring your vision to life — handcrafted sculptures, made-to-order.</p>
+                <p class="small">Materials: Soapstone • Granite • Wood</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Glassy Form -->
+          <div class="col-md-6 d-flex align-items-center" >
+            <div class="p-4 p-md-5 w-100" >
+
+              <div class="form" >
+
+                <span class="lead-badge">Lead</span>
+                <h5 class="mb-3">Project details</h5>
+
+                <!-- form fields (outer form wraps the whole page) -->
+                  <div class="mb-3">
+                    <label for="title" class="form-label">Title</label>
+                    <input type="text" class="form-control bg-transparent border-1" id="title" name="title" placeholder="Ex: 'Dancing Figure'" required>
+                  </div>
+
+                  <div class="mb-3">
+                    <label for="description" class="form-label">Description</label>
+                    <textarea class="form-control bg-transparent border-1" id="description" name="description" rows="3" placeholder="Describe the piece, pose, mood, references..." required></textarea>
+                  </div>
+
+                  <div class="row g-3">
+                    <div class="col-md-6">
+                      <label for="height" class="form-label">Height (cm)</label>
+                      <input type="number" class="form-control bg-transparent border-1" id="height" name="height" min="1" placeholder="e.g. 45">
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="material" class="form-label">Material</label>
+                      <select id="material" name="material" class="form-select bg-transparent border-1">
+                        <option value="soapstone">Soapstone</option>
+                        <option value="granite">Granite</option>
+                        <option value="wood">Wood</option>
+                        <option value="bronze">Bronze</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="row g-3 mt-2">
+                    <div class="col-md-6">
+                      <label for="timeline" class="form-label">Timeline</label>
+                      <select id="timeline" name="timeline" class="form-select bg-transparent border-1">
+                        <option>1 week</option>
+                        <option>2 weeks</option>
+                        <option>1 month</option>
+                        <option>Custom</option>
+                      </select>
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="location" class="form-label">Location</label>
+                      <input type="text" class="form-control bg-transparent border-1" id="location" name="location" placeholder="City, Country">
+                    </div>
+                  </div>
+
+                  <div class="d-flex gap-2 mt-4">
+                    <button type="submit" class="btn btn-dark">Request Quote</button>
+                    <button type="reset" class="btn btn-outline-dark">Reset</button>
+                  </div>
+
+                <!-- end form fields -->
+
+              </div>
+
+              <div class="mt-3 text-muted small">We'll contact you within 48 hours to confirm details.</div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+</div>
+</form> 
+ 

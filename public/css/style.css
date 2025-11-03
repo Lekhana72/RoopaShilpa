@@ -302,59 +302,83 @@ backdrop-filter: blur(4.6px);
       margin-top: 1.5rem;
     }
 
-    /* commission masterpiece */
-    /* Overall layout */
- .main-section {
-      padding: 5rem 0;
-    }
-
-    .heading {
-      font-weight: 600;
-      margin-bottom: 1rem;
-    }
-
-    /* Glass Form */
-    .glass-form {
-      background: rgba(255, 255, 255, 0.08);
-      border-radius: 20px;
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-      padding: 2rem;
-    }
-
-    .form-control {
-      background: rgba(255, 255, 255, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      color: #fff;
-    }
-
-    .form-control::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-    }
-
-    .btn-gold {
-      background: linear-gradient(90deg, #cba535, #b7be5d);
-      color: #000;
-      border: none;
-      border-radius: 10px;
-      transition: all 0.3s ease;
-    }
-
-    .btn-gold:hover {
-      background: linear-gradient(90deg, #b7be5d, #cba535);
-      transform: translateY(-2px);
-      color: #000;
-    }
-
-    .artist-card img {
-      border-radius: 50%;
-      border: 2px solid rgba(255, 255, 255, 0.3);
-    }
-
-    @media (max-width: 991px) {
-      .glass-form {
-        margin-top: 2rem;
+    /* commsion form */
+    :root{
+        --glass-bg: rgba(255, 255, 255, 0.08);
+        --glass-border: rgba(255,255,255,0.12);
       }
-    }
+
+       /* body{
+        min-height:100vh;
+        background: linear-gradient(180deg,#0f1724 0%, #0b1220 100%);
+        color: #eef2ff;
+        display:flex;
+        align-items:center;
+        padding: 3rem 1rem;
+      }  */
+
+      .commission-card{
+        width:100%;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(2,6,23,0.7);
+       
+        
+      }
+
+      .left-side{
+        /* background-size: cover;
+        background-position: center; */
+        width : 400px;
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        padding: 2rem;
+      }
+
+      .left-overlay{
+        background: linear-gradient(180deg, rgba(3,7,18,0.35), rgba(3,7,18,0.6));
+        padding: 2rem;
+        border-radius: 12px;
+        text-align:center;
+      }
+
+      .left-overlay h2{
+        font-weight: 700;
+        margin-bottom: .5rem;
+        letter-spacing: -0.5px;
+      }
+
+      .left-overlay p{opacity: .9}
+
+      /* Glass effect for the form */
+      .glass-form{
+        background: var(--glass-bg); 
+        border: 1px solid var(--glass-border);
+         backdrop-filter: blur(10px) saturate(120%);
+        -webkit-backdrop-filter: blur(10px) saturate(120%);
+        padding: 1.75rem;
+        border-radius: 14px;
+        color: black; 
+        
+      }
+
+      .form-label{color: black}
+      .form-control::placeholder{color: rgba(156, 159, 165, 0.55)}
+
+      .lead-badge{
+        display:inline-block;
+        font-weight:600;
+        padding: .25rem .6rem;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.06);
+        border: 1px solid rgba(255,255,255,0.06);
+        color: black;
+        font-size: .85rem;
+        margin-bottom: .75rem;
+      }
+
+      /* Small screens: stack columns */
+      @media (max-width: 767.98px){
+        .left-side{min-height:260px}
+      }

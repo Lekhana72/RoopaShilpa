@@ -4,6 +4,7 @@ const passport = require("passport");
 const router = express.Router();
 const User = require("../models/user.js");
 const { saveRedirectUrl } = require("../middleware.js");
+const { isLoggedIn } = require("../middleware.js");
 
 router.get("/signup", (req, res) => {
   res.render("users/signup.ejs");
@@ -59,5 +60,32 @@ router.get("/logout",(req,res, next)=>{
     res.redirect("/listings");
   });
 });
+
+// Profile route — show order history
+router.get(
+  "/users/profile",
+  isLoggedIn,
+  wrapAsync(async (req, res) => {
+    // If admin, show all users' orders in a table
+    if (req.user && req.user.username === "lekhana") {
+      const users = await User.find({}).populate("orders.listing");
+      // collect orders with owner info
+      const adminOrders = [];
+      users.forEach((u) => {
+        (u.orders || []).forEach((o) => {
+          adminOrders.push({
+            ownerUsername: u.username,
+            ownerEmail: u.email,
+            order: o,
+          });
+        });
+      });
+      return res.render("users/profile", { user: req.user, isAdmin: true, adminOrders });
+    }
+
+    const user = await User.findById(req.user._id).populate("orders.listing");
+    res.render("users/profile", { user, isAdmin: false });
+  })
+);
 
 module.exports = router;
