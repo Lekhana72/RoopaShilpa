@@ -12,7 +12,7 @@
 <link rel="stylesheet" href="../css/hero.css" />
 
 
-<div>
+<div class="container py-5">
   <h3>All Listings</h3>
 
 <% if (currUser && currUser.username === 'lekhana') { %>
@@ -26,12 +26,12 @@
     <div class="col">
       <div class="card h-100">
         <img
-          src="<%= listing.image %>"
-          class="card-img-top py-4"
+          src="<%= listing.image.url %>"
+          class="card-img-top"
           alt="listing image"
-          style="height: 30rem;width:20px; object-fit: cover;"
+          style="height: 20rem;width:10px; object-fit: cover;"
         />
-        <div class="card-body py-5">
+        <div class="card-body ms-3 mb-3 py-3">
           <h5 class="card-title"><%= listing.title %></h5>
           <p class="card-text mb-2">
             <strong>&#8377; <%= listing.price ? listing.price.toLocaleString('en-IN') : "Price not available" %></strong>

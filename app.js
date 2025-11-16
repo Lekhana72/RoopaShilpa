@@ -1,3 +1,7 @@
+if(process.env.NODE_ENV != "production"){
+  require("dotenv").config();
+}
+
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
@@ -14,9 +18,10 @@ const User = require("./models/user.js");
 
 const homeRouter = require("./routes/home.js");
 const listingRouter = require("./routes/listing.js");
-const reviewRouter = require("./routes/review.js");
+
 const userRouter = require("./routes/user.js");
 const orderRouter = require("./routes/custom.js");
+const aboutRouter = require("./routes/about.js");
 
 const MONGO_URL = "mongodb://127.0.0.1:27017/wanderlust";
 async function main() {
@@ -74,11 +79,12 @@ app.use((req,res, next)=>{
   next();
 });
 
-app.use("/home",homeRouter);
+app.use("/",homeRouter);
 app.use("/listings", listingRouter);
-app.use("/listings/:id/reviews", reviewRouter);
+
 app.use("/", userRouter);
 app.use("/custom", orderRouter);
+app.use("/about", aboutRouter);
 
 
 app.all(/.*/, (req, res, next) => {

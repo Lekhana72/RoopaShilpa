@@ -184,6 +184,7 @@ nav.navbar {
 .listings-card {
   border: none !important;
   margin-bottom: 2rem;
+  height: 30px !important;
 }
 
 .card-img-top {
@@ -382,3 +383,38 @@ backdrop-filter: blur(4.6px);
       @media (max-width: 767.98px){
         .left-side{min-height:260px}
       }
+
+      /* for about page */
+      .about {
+            background-color: #fef6f0;
+            padding: 80px 0;
+        }
+        .about img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .about-text h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+        .about-text h3 {
+            font-weight: 400;
+            color: #555;
+        }
+        .books .card {
+            border: none;
+        }
+        .books .card img {
+            height: 300px;
+            object-fit: cover;
+        }
+        .btn-black {
+            background-color: #111;
+            color: #fff;
+        }
+        .btn-black:hover {
+            background-color: #333;
+            color: #fff;
+        }
+
+/* About Page */

@@ -10,7 +10,7 @@ const { isLoggedIn, validateOrder } = require("../middleware.js");
 
 // When this router is mounted with app.use('/custom', orderRouter)
 // the route here should be '/' so the final path is '/custom'.
-router.get("/",isLoggedIn, wrapAsync(async (req, res) => {
+router.get("/", isLoggedIn, wrapAsync(async (req, res) => {
   // render by view name (no need for ./ or .ejs)
   res.render("listings/custom");
 }));
