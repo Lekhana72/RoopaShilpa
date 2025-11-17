@@ -14,7 +14,7 @@ const User = require("../models/user.js");
 router.get("/signup",userController.rendersignup );
 
 router.post(
-  "/signup",wrapAsync( userController.registerUser)
+  "/signup",wrapAsync( userController.signup)
   );
 
 router.get("/login", userController.renderLoginForm );
